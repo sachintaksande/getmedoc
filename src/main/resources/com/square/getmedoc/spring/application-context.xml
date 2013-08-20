@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context" 
+	xmlns:tx="http://www.springframework.org/schema/tx" 
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.2.xsd 
+	http://www.springframework.org/schema/context 
+	http://www.springframework.org/schema/context/spring-context-3.2.xsd 
+	http://www.springframework.org/schema/tx 
+    http://www.springframework.org/schema/tx/spring-tx-3.2.xsd 
+    http://www.springframework.org/schema/data/jpa 
+    http://www.springframework.org/schema/data/jpa/spring-jpa-1.3.xsd">
+	
+	<context:annotation-config/>
+	
+	<!-- Scan the com.itcuties.registration package for Spring -->
+	<context:component-scan base-package="com.square.getmedoc" />
+	
+	<bean  class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location">
+			<value>classpath:com/square/getmedoc/spring/jdbc/jdbc.properties</value>
+		</property>
+	</bean>
+   
+   <!-- ENTITY MANAGER FACTORY -->
+   <bean id="emf" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+      <property name="dataSource" ref="dataSource" />
+      <property name="packagesToScan" value="${entitymanager.packages.to.scan}" />
+      <property name="jpaVendorAdapter">
+         <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
+      </property>
+      <property name="jpaProperties">
+         <props>
+			<prop key="hibernate.dialect">${hibernate.dialect}</prop>
+			<prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
+			<prop key="hibernate.dialect">${hibernate.dialect}</prop>
+			<prop key="hibernate.format_sql">${hibernate.format_sql}</prop>
+			<prop key="hibernate.use_sql_comments">${hibernate.use_sql_comments}</prop>
+			<prop key="hibernate.auto_close_session">${hibernate.auto_close_session}</prop>
+		</props>
+      </property>
+   </bean>
+ 
+   <bean id="dataSource" class="com.jolbox.bonecp.BoneCPDataSource" destroy-method="close">
+      <property name="driverClass" value="${astroguide.jdbc.driverClassName}" />
+      <property name="jdbcUrl" value="${astroguide.jdbc.url}" />
+      <property name="username" value="${astroguide.jdbc.username}"/>
+      <property name="password" value="${astroguide.jdbc.password}"/>
+      
+      <property name="idleConnectionTestPeriod" value="60"/>
+      <property name="idleMaxAge" value="240"/>      
+      <property name="maxConnectionsPerPartition" value="60"/>
+      <property name="minConnectionsPerPartition" value="20"/>
+      <property name="partitionCount" value="3"/>
+      <property name="acquireIncrement" value="10"/>                              
+      <property name="statementsCacheSize" value="50"/>
+      <property name="releaseHelperThreads" value="3"/>
+   </bean>
+   
+   <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+      <property name="entityManagerFactory" ref="emf" />
+   </bean>
+   <tx:annotation-driven />
+   
+   <bean id="persistenceExceptionTranslationPostProcessor"
+      class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
+      
+   <jpa:repositories base-package="com.project.astroguide.repositories"></jpa:repositories>
+      
+</beans>

@@ -66,6 +66,6 @@
    <bean id="persistenceExceptionTranslationPostProcessor"
       class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
       
-   <jpa:repositories base-package="com.project.astroguide.repositories"></jpa:repositories>
+   <jpa:repositories base-package="com.square.getmedoc.repositories"></jpa:repositories>
       
 </beans>

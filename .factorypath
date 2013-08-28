@@ -1,4 +1,4 @@
 <factorypath>
     <factorypathentry kind="PLUGIN" id="org.eclipse.jst.ws.annotations.core" enabled="true" runInBatchMode="false"/>
-    <factorypathentry kind="EXTJAR" id="D:\Doctors\querydsl-jpa-3.2.0-apt-one-jar.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="WKSPJAR" id="/getmedoc/querydsl-jpa-3.2.0-apt-one-jar.jar" enabled="true" runInBatchMode="false"/>
 </factorypath>

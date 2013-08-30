@@ -11,10 +11,10 @@
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLInnoDBDialect</property>
         <property name="hibernate.search.autoregister_listeners">false</property>
-        <mapping class="com.square.db.model.Webaddress" />
-        <mapping class="com.square.db.model.Userrole" />
-        <mapping class="com.square.db.model.Phone" />
-        <mapping class="com.square.db.model.Appuser" />
-        <mapping class="com.square.db.model.Address" />
+        <mapping class="com.square.getmedoc.db.model.Address" />
+        <mapping class="com.square.getmedoc.db.model.Userrole" />
+        <mapping class="com.square.getmedoc.db.model.Phone" />
+        <mapping class="com.square.getmedoc.db.model.Webaddress" />
+        <mapping class="com.square.getmedoc.db.model.Appuser" />
     </session-factory>
 </hibernate-configuration>

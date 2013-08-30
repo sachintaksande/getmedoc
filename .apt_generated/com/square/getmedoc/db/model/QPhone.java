@@ -30,6 +30,8 @@ public class QPhone extends EntityPathBase<Phone> {
 
     public final StringPath phonenum = createString("phonenum");
 
+    public final NumberPath<Integer> preferred = createNumber("preferred", Integer.class);
+
     public final NumberPath<Integer> type = createNumber("type", Integer.class);
 
     public QPhone(String variable) {

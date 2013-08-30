@@ -26,7 +26,7 @@ public class QAppuser extends EntityPathBase<Appuser> {
 
     public final StringPath email = createString("email");
 
-    public final NumberPath<Short> enabled = createNumber("enabled", Short.class);
+    public final NumberPath<Integer> enabled = createNumber("enabled", Integer.class);
 
     public final StringPath fullname = createString("fullname");
 
@@ -34,13 +34,17 @@ public class QAppuser extends EntityPathBase<Appuser> {
 
     public final SetPath<Phone, QPhone> phones = this.<Phone, QPhone>createSet("phones", Phone.class, QPhone.class, PathInits.DIRECT2);
 
+    public final NumberPath<Integer> status = createNumber("status", Integer.class);
+
+    public final NumberPath<Integer> substatus = createNumber("substatus", Integer.class);
+
     public final StringPath username = createString("username");
 
     public final SetPath<Userrole, QUserrole> userroles = this.<Userrole, QUserrole>createSet("userroles", Userrole.class, QUserrole.class, PathInits.DIRECT2);
 
-    public final NumberPath<Short> usersubtype = createNumber("usersubtype", Short.class);
+    public final NumberPath<Integer> usersubtype = createNumber("usersubtype", Integer.class);
 
-    public final NumberPath<Short> usertype = createNumber("usertype", Short.class);
+    public final NumberPath<Integer> usertype = createNumber("usertype", Integer.class);
 
     public final SetPath<Webaddress, QWebaddress> webaddresses = this.<Webaddress, QWebaddress>createSet("webaddresses", Webaddress.class, QWebaddress.class, PathInits.DIRECT2);
 

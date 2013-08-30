@@ -8,4 +8,5 @@ public interface AppuserRepository extends CustomBaseRepository<Appuser, Long> {
 	
 	List<Appuser> findByUsername(String username);
 	List<Appuser> findByUsernameAndPassword(String username, String password);
+	List<Appuser> findByUsertype(Integer type);
 }

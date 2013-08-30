@@ -1,6 +1,6 @@
 package com.square.getmedoc.db.model;
 
-// Generated Aug 20, 2013 3:02:41 PM by Hibernate Tools 4.0.0
+// Generated Aug 29, 2013 7:53:12 PM by Hibernate Tools 4.0.0
 
 import java.util.HashSet;
 import java.util.Set;
@@ -29,9 +29,11 @@ public class Appuser implements java.io.Serializable {
 	private String password;
 	private String fullname;
 	private String email;
-	private Short enabled;
-	private Short usertype;
-	private Short usersubtype;
+	private Integer enabled;
+	private Integer usertype;
+	private Integer usersubtype;
+	private Integer status;
+	private Integer substatus;
 	private Set<Address> addresses = new HashSet<Address>(0);
 	private Set<Userrole> userroles = new HashSet<Userrole>(0);
 	private Set<Webaddress> webaddresses = new HashSet<Webaddress>(0);
@@ -46,7 +48,8 @@ public class Appuser implements java.io.Serializable {
 	}
 
 	public Appuser(String username, String password, String fullname,
-			String email, Short enabled, Short usertype, Short usersubtype,
+			String email, Integer enabled, Integer usertype,
+			Integer usersubtype, Integer status, Integer substatus,
 			Set<Address> addresses, Set<Userrole> userroles,
 			Set<Webaddress> webaddresses, Set<Phone> phones) {
 		this.username = username;
@@ -56,6 +59,8 @@ public class Appuser implements java.io.Serializable {
 		this.enabled = enabled;
 		this.usertype = usertype;
 		this.usersubtype = usersubtype;
+		this.status = status;
+		this.substatus = substatus;
 		this.addresses = addresses;
 		this.userroles = userroles;
 		this.webaddresses = webaddresses;
@@ -110,30 +115,48 @@ public class Appuser implements java.io.Serializable {
 	}
 
 	@Column(name = "enabled")
-	public Short getEnabled() {
+	public Integer getEnabled() {
 		return this.enabled;
 	}
 
-	public void setEnabled(Short enabled) {
+	public void setEnabled(Integer enabled) {
 		this.enabled = enabled;
 	}
 
 	@Column(name = "usertype")
-	public Short getUsertype() {
+	public Integer getUsertype() {
 		return this.usertype;
 	}
 
-	public void setUsertype(Short usertype) {
+	public void setUsertype(Integer usertype) {
 		this.usertype = usertype;
 	}
 
 	@Column(name = "usersubtype")
-	public Short getUsersubtype() {
+	public Integer getUsersubtype() {
 		return this.usersubtype;
 	}
 
-	public void setUsersubtype(Short usersubtype) {
+	public void setUsersubtype(Integer usersubtype) {
 		this.usersubtype = usersubtype;
+	}
+
+	@Column(name = "status")
+	public Integer getStatus() {
+		return this.status;
+	}
+
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
+
+	@Column(name = "substatus")
+	public Integer getSubstatus() {
+		return this.substatus;
+	}
+
+	public void setSubstatus(Integer substatus) {
+		this.substatus = substatus;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "appuser")

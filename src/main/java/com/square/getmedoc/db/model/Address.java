@@ -1,6 +1,6 @@
 package com.square.getmedoc.db.model;
 
-// Generated Aug 20, 2013 3:02:41 PM by Hibernate Tools 4.0.0
+// Generated Aug 29, 2013 7:53:12 PM by Hibernate Tools 4.0.0
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -29,6 +29,7 @@ public class Address implements java.io.Serializable {
 	private String country;
 	private String zip;
 	private int type;
+	private Integer preferred;
 
 	public Address() {
 	}
@@ -41,7 +42,8 @@ public class Address implements java.io.Serializable {
 	}
 
 	public Address(Appuser appuser, String line1, String line2, String line3,
-			String city, String state, String country, String zip, int type) {
+			String city, String state, String country, String zip, int type,
+			Integer preferred) {
 		this.appuser = appuser;
 		this.line1 = line1;
 		this.line2 = line2;
@@ -51,6 +53,7 @@ public class Address implements java.io.Serializable {
 		this.country = country;
 		this.zip = zip;
 		this.type = type;
+		this.preferred = preferred;
 	}
 
 	@Id
@@ -144,6 +147,15 @@ public class Address implements java.io.Serializable {
 
 	public void setType(int type) {
 		this.type = type;
+	}
+
+	@Column(name = "preferred")
+	public Integer getPreferred() {
+		return this.preferred;
+	}
+
+	public void setPreferred(Integer preferred) {
+		this.preferred = preferred;
 	}
 
 }

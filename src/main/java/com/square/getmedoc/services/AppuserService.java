@@ -15,4 +15,5 @@ public interface AppuserService extends JpaRepository<Appuser, Long> {
 	public Appuser findByUsername(String username);
 	public Appuser findByUsernameAndPassword(String username, String password);
 	public List<Appuser> load(int first, int pageSize, String sortField, SortOrder sortOrder, Map<String, String> filters);
+	public List<Appuser> findByUsertype(Integer type);
 }

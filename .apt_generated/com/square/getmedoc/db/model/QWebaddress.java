@@ -26,6 +26,8 @@ public class QWebaddress extends EntityPathBase<Webaddress> {
 
     public final StringPath email = createString("email");
 
+    public final NumberPath<Integer> preferred = createNumber("preferred", Integer.class);
+
     public final NumberPath<Integer> type = createNumber("type", Integer.class);
 
     public final NumberPath<Integer> webaddressid = createNumber("webaddressid", Integer.class);

@@ -36,6 +36,8 @@ public class QAddress extends EntityPathBase<Address> {
 
     public final StringPath line3 = createString("line3");
 
+    public final NumberPath<Integer> preferred = createNumber("preferred", Integer.class);
+
     public final StringPath state = createString("state");
 
     public final NumberPath<Integer> type = createNumber("type", Integer.class);

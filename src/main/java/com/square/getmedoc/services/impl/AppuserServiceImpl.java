@@ -184,4 +184,9 @@ public class AppuserServiceImpl implements AppuserService {
 		qry.setMaxResults(pageSize);
 		return qry.getResultList();
 	}
+
+	@Override
+	public List<Appuser> findByUsertype(Integer type) {
+		return appuserRepository.findByUsertype(type);
+	}
 }

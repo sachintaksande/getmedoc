@@ -1,6 +1,6 @@
 package com.square.getmedoc.db.model;
 
-// Generated Aug 20, 2013 3:02:41 PM by Hibernate Tools 4.0.0
+// Generated Aug 29, 2013 7:53:12 PM by Hibernate Tools 4.0.0
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,6 +24,7 @@ public class Phone implements java.io.Serializable {
 	private int type;
 	private String phonenum;
 	private String ext;
+	private Integer preferred;
 
 	public Phone() {
 	}
@@ -34,11 +35,13 @@ public class Phone implements java.io.Serializable {
 		this.phonenum = phonenum;
 	}
 
-	public Phone(Appuser appuser, int type, String phonenum, String ext) {
+	public Phone(Appuser appuser, int type, String phonenum, String ext,
+			Integer preferred) {
 		this.appuser = appuser;
 		this.type = type;
 		this.phonenum = phonenum;
 		this.ext = ext;
+		this.preferred = preferred;
 	}
 
 	@Id
@@ -87,6 +90,15 @@ public class Phone implements java.io.Serializable {
 
 	public void setExt(String ext) {
 		this.ext = ext;
+	}
+
+	@Column(name = "preferred")
+	public Integer getPreferred() {
+		return this.preferred;
+	}
+
+	public void setPreferred(Integer preferred) {
+		this.preferred = preferred;
 	}
 
 }

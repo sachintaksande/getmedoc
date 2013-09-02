@@ -1,6 +1,6 @@
 package com.square.getmedoc.db.model;
 
-// Generated Sep 2, 2013 7:42:39 PM by Hibernate Tools 4.0.0
+// Generated Sep 3, 2013 12:19:59 AM by Hibernate Tools 4.0.0
 
 import java.util.HashSet;
 import java.util.Set;
@@ -159,7 +159,7 @@ public class Appuser implements java.io.Serializable {
 		this.substatus = substatus;
 	}
 
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "appuser")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "appuser")
 	public Set<Address> getAddresses() {
 		return this.addresses;
 	}
@@ -168,7 +168,7 @@ public class Appuser implements java.io.Serializable {
 		this.addresses = addresses;
 	}
 
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "appuseruserrole", catalog = "getmedoc", joinColumns = { @JoinColumn(name = "appuserid", nullable = false, updatable = false) }, inverseJoinColumns = { @JoinColumn(name = "userroleid", nullable = false, updatable = false) })
 	public Set<Userrole> getUserroles() {
 		return this.userroles;
@@ -178,7 +178,7 @@ public class Appuser implements java.io.Serializable {
 		this.userroles = userroles;
 	}
 
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "appuser")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "appuser")
 	public Set<Webaddress> getWebaddresses() {
 		return this.webaddresses;
 	}
@@ -187,7 +187,7 @@ public class Appuser implements java.io.Serializable {
 		this.webaddresses = webaddresses;
 	}
 
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "appuser")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "appuser")
 	public Set<Phone> getPhones() {
 		return this.phones;
 	}

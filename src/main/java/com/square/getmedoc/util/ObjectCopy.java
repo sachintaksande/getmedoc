@@ -16,16 +16,16 @@ public class ObjectCopy {
 					continue;
 				String capField = m.getName().substring(3);
 				String field = capField.substring(0,1).toLowerCase() + capField.substring(1);
-				Method getter = classDef.getMethod("get"+capField, null);
+				Method getter = classDef.getMethod("get"+capField);
 				if(getter == null)
 					continue;
 				if(includeFields != null && includeFields.size() > 0 && includeFields.contains(field)){
-					m.invoke(tgt, getter.invoke(src, null));
+					m.invoke(tgt, getter.invoke(src));
 					continue;
 				}else if(excludeFields != null && excludeFields.size() > 0 && excludeFields.contains(field))
 					continue;
 				else
-					m.invoke(tgt, getter.invoke(src, null));
+					m.invoke(tgt, getter.invoke(src));
 			}
 			return tgt;
 		}catch (Exception e) {

@@ -20,7 +20,7 @@ public class DoctorRA implements ResourceAssembler<Appuser, Resource<Appuser>>{
 	@Override
 	public Resource<Appuser> toResource(Appuser u) {
 		Appuser user = new Appuser();
-		user = (Appuser)ObjectCopy.copyObject(u, user, Appuser.class, Arrays.asList("password,enabled,username"), null);
+		user = (Appuser)ObjectCopy.copyObject(u, user, Appuser.class, Arrays.asList("password","enabled","username"), null);
 		long userId = user.getAppuserid();
 		user.setAppuserid(new Long(0));
 		List<Link> links = new ArrayList<Link>(0);

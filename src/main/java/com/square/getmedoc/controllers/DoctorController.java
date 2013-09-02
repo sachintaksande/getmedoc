@@ -39,7 +39,7 @@ public class DoctorController {
 	}
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public @ResponseBody HttpEntity<Resources<Resource<Appuser>>> getAllDoctors(){
+	public HttpEntity<Resources<Resource<Appuser>>> getAllDoctors(){
 		Collection<Resource<Appuser>> userResCollection = new ArrayList<Resource<Appuser>>();
 		List<Appuser> users = appuserService.findByUsertype(1);
 		for(Appuser u : users){
@@ -51,7 +51,7 @@ public class DoctorController {
 	}
 	
 	@RequestMapping(method=RequestMethod.GET, value=AppUrlConstants.URL_DOCTORS_DOCTOR)
-	public @ResponseBody HttpEntity<Resource<Appuser>> getDoctor(@PathVariable(value="doctor") Long doctorId){
+	public HttpEntity<Resource<Appuser>> getDoctor(@PathVariable(value="doctor") Long doctorId){
 		return new ResponseEntity<Resource<Appuser>>(doctorRA.toResource(appuserService.findOne(doctorId)), HttpStatus.OK);
 	}
 }

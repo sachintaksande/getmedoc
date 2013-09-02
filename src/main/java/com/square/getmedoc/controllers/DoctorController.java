@@ -18,6 +18,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.square.getmedoc.db.model.Appuser;
 import com.square.getmedoc.hateoas.DoctorRA;
@@ -38,7 +39,7 @@ public class DoctorController {
 	}
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public HttpEntity<Resources<Resource<Appuser>>> getAllDoctors(){
+	public @ResponseBody HttpEntity<Resources<Resource<Appuser>>> getAllDoctors(){
 		Collection<Resource<Appuser>> userResCollection = new ArrayList<Resource<Appuser>>();
 		List<Appuser> users = appuserService.findByUsertype(1);
 		for(Appuser u : users){
@@ -50,7 +51,7 @@ public class DoctorController {
 	}
 	
 	@RequestMapping(method=RequestMethod.GET, value=AppUrlConstants.URL_DOCTORS_DOCTOR)
-	public HttpEntity<Resource<Appuser>> getDoctor(@PathVariable(value="doctor") Long doctorId){
+	public @ResponseBody HttpEntity<Resource<Appuser>> getDoctor(@PathVariable(value="doctor") Long doctorId){
 		return new ResponseEntity<Resource<Appuser>>(doctorRA.toResource(appuserService.findOne(doctorId)), HttpStatus.OK);
 	}
 }

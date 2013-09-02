@@ -22,7 +22,7 @@ public class QAddress extends EntityPathBase<Address> {
 
     public static final QAddress address = new QAddress("address");
 
-    public final NumberPath<Integer> addressid = createNumber("addressid", Integer.class);
+    public final NumberPath<Long> addressid = createNumber("addressid", Long.class);
 
     public final QAppuser appuser;
 

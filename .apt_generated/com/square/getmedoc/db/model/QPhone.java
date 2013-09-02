@@ -26,7 +26,7 @@ public class QPhone extends EntityPathBase<Phone> {
 
     public final StringPath ext = createString("ext");
 
-    public final NumberPath<Integer> phoneid = createNumber("phoneid", Integer.class);
+    public final NumberPath<Long> phoneid = createNumber("phoneid", Long.class);
 
     public final StringPath phonenum = createString("phonenum");
 

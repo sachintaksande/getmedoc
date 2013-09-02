@@ -1,6 +1,6 @@
 package com.square.getmedoc.db.model;
 
-// Generated Aug 29, 2013 7:53:12 PM by Hibernate Tools 4.0.0
+// Generated Sep 2, 2013 7:42:39 PM by Hibernate Tools 4.0.0
 
 import java.util.HashSet;
 import java.util.Set;
@@ -21,7 +21,7 @@ import javax.persistence.UniqueConstraint;
 @Table(name = "userrole", catalog = "getmedoc", uniqueConstraints = @UniqueConstraint(columnNames = "rolename"))
 public class Userrole implements java.io.Serializable {
 
-	private Integer roleid;
+	private Long roleid;
 	private String rolename;
 	private String description;
 	private Set<Appuser> appusers = new HashSet<Appuser>(0);
@@ -42,11 +42,11 @@ public class Userrole implements java.io.Serializable {
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "roleid", unique = true, nullable = false)
-	public Integer getRoleid() {
+	public Long getRoleid() {
 		return this.roleid;
 	}
 
-	public void setRoleid(Integer roleid) {
+	public void setRoleid(Long roleid) {
 		this.roleid = roleid;
 	}
 

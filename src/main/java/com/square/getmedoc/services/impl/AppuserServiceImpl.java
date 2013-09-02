@@ -86,8 +86,7 @@ public class AppuserServiceImpl implements AppuserService {
 
 	
 	public Appuser findOne(Long paramID) {
-		// TODO Auto-generated method stub
-		return null;
+		return appuserRepository.findOne(paramID);
 	}
 
 	

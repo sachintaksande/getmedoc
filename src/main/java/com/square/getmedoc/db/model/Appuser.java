@@ -1,6 +1,6 @@
 package com.square.getmedoc.db.model;
 
-// Generated Aug 29, 2013 7:53:12 PM by Hibernate Tools 4.0.0
+// Generated Sep 2, 2013 7:42:39 PM by Hibernate Tools 4.0.0
 
 import java.util.HashSet;
 import java.util.Set;
@@ -24,7 +24,7 @@ import javax.persistence.UniqueConstraint;
 @Table(name = "appuser", catalog = "getmedoc", uniqueConstraints = @UniqueConstraint(columnNames = "username"))
 public class Appuser implements java.io.Serializable {
 
-	private Integer appuserid;
+	private Long appuserid;
 	private String username;
 	private String password;
 	private String fullname;
@@ -70,11 +70,11 @@ public class Appuser implements java.io.Serializable {
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "appuserid", unique = true, nullable = false)
-	public Integer getAppuserid() {
+	public Long getAppuserid() {
 		return this.appuserid;
 	}
 
-	public void setAppuserid(Integer appuserid) {
+	public void setAppuserid(Long appuserid) {
 		this.appuserid = appuserid;
 	}
 
@@ -159,7 +159,7 @@ public class Appuser implements java.io.Serializable {
 		this.substatus = substatus;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "appuser")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "appuser")
 	public Set<Address> getAddresses() {
 		return this.addresses;
 	}
@@ -168,7 +168,7 @@ public class Appuser implements java.io.Serializable {
 		this.addresses = addresses;
 	}
 
-	@ManyToMany(fetch = FetchType.LAZY)
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "appuseruserrole", catalog = "getmedoc", joinColumns = { @JoinColumn(name = "appuserid", nullable = false, updatable = false) }, inverseJoinColumns = { @JoinColumn(name = "userroleid", nullable = false, updatable = false) })
 	public Set<Userrole> getUserroles() {
 		return this.userroles;
@@ -178,7 +178,7 @@ public class Appuser implements java.io.Serializable {
 		this.userroles = userroles;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "appuser")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "appuser")
 	public Set<Webaddress> getWebaddresses() {
 		return this.webaddresses;
 	}
@@ -187,7 +187,7 @@ public class Appuser implements java.io.Serializable {
 		this.webaddresses = webaddresses;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "appuser")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "appuser")
 	public Set<Phone> getPhones() {
 		return this.phones;
 	}

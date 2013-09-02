@@ -22,7 +22,7 @@ public class DoctorRA implements ResourceAssembler<Appuser, Resource<Appuser>>{
 		Appuser user = new Appuser();
 		user = (Appuser)ObjectCopy.copyObject(u, user, Appuser.class, Arrays.asList("password,enabled,username"), null);
 		long userId = user.getAppuserid();
-		user.setAppuserid(0);
+		user.setAppuserid(new Long(0));
 		List<Link> links = new ArrayList<Link>(0);
 		links.add(ControllerLinkBuilder.linkTo(ControllerLinkBuilder.methodOn(DoctorController.class).getDoctor(userId)).withSelfRel());
 		return new Resource<Appuser>(user, links);

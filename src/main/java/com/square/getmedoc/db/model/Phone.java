@@ -1,6 +1,6 @@
 package com.square.getmedoc.db.model;
 
-// Generated Aug 29, 2013 7:53:12 PM by Hibernate Tools 4.0.0
+// Generated Sep 2, 2013 7:42:39 PM by Hibernate Tools 4.0.0
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,7 +19,7 @@ import javax.persistence.Table;
 @Table(name = "phone", catalog = "getmedoc")
 public class Phone implements java.io.Serializable {
 
-	private Integer phoneid;
+	private Long phoneid;
 	private Appuser appuser;
 	private int type;
 	private String phonenum;
@@ -47,11 +47,11 @@ public class Phone implements java.io.Serializable {
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "phoneid", unique = true, nullable = false)
-	public Integer getPhoneid() {
+	public Long getPhoneid() {
 		return this.phoneid;
 	}
 
-	public void setPhoneid(Integer phoneid) {
+	public void setPhoneid(Long phoneid) {
 		this.phoneid = phoneid;
 	}
 

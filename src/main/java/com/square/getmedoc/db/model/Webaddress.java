@@ -1,6 +1,6 @@
 package com.square.getmedoc.db.model;
 
-// Generated Aug 29, 2013 7:53:12 PM by Hibernate Tools 4.0.0
+// Generated Sep 2, 2013 7:42:39 PM by Hibernate Tools 4.0.0
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,7 +19,7 @@ import javax.persistence.Table;
 @Table(name = "webaddress", catalog = "getmedoc")
 public class Webaddress implements java.io.Serializable {
 
-	private Integer webaddressid;
+	private Long webaddressid;
 	private Appuser appuser;
 	private int type;
 	private String email;
@@ -44,11 +44,11 @@ public class Webaddress implements java.io.Serializable {
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "webaddressid", unique = true, nullable = false)
-	public Integer getWebaddressid() {
+	public Long getWebaddressid() {
 		return this.webaddressid;
 	}
 
-	public void setWebaddressid(Integer webaddressid) {
+	public void setWebaddressid(Long webaddressid) {
 		this.webaddressid = webaddressid;
 	}
 

@@ -30,7 +30,7 @@ public class QWebaddress extends EntityPathBase<Webaddress> {
 
     public final NumberPath<Integer> type = createNumber("type", Integer.class);
 
-    public final NumberPath<Integer> webaddressid = createNumber("webaddressid", Integer.class);
+    public final NumberPath<Long> webaddressid = createNumber("webaddressid", Long.class);
 
     public QWebaddress(String variable) {
         this(Webaddress.class, forVariable(variable), INITS);

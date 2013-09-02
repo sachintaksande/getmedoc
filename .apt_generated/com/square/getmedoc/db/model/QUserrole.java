@@ -24,7 +24,7 @@ public class QUserrole extends EntityPathBase<Userrole> {
 
     public final StringPath description = createString("description");
 
-    public final NumberPath<Integer> roleid = createNumber("roleid", Integer.class);
+    public final NumberPath<Long> roleid = createNumber("roleid", Long.class);
 
     public final StringPath rolename = createString("rolename");
 

@@ -22,7 +22,7 @@ public class QAppuser extends EntityPathBase<Appuser> {
 
     public final SetPath<Address, QAddress> addresses = this.<Address, QAddress>createSet("addresses", Address.class, QAddress.class, PathInits.DIRECT2);
 
-    public final NumberPath<Integer> appuserid = createNumber("appuserid", Integer.class);
+    public final NumberPath<Long> appuserid = createNumber("appuserid", Long.class);
 
     public final StringPath email = createString("email");
 

@@ -147,7 +147,7 @@ public class AppuserServiceImpl implements AppuserService {
 	}
 	
 	
-	public List<Appuser> load(int first, int pageSize, String sortField, SortOrder sortOrder, Map<String, String> filters) {
+	public List<Appuser> load(int pageNo, int pageSize, String sortField, SortOrder sortOrder, Map<String, String> filters) {
 		
 		CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
 		
@@ -179,7 +179,7 @@ public class AppuserServiceImpl implements AppuserService {
 			select.where(arr);
 		}
 		TypedQuery<Appuser> qry = em.createQuery(select);
-		qry.setFirstResult(first);
+		qry.setFirstResult(pageNo*pageSize);
 		qry.setMaxResults(pageSize);
 		return qry.getResultList();
 	}

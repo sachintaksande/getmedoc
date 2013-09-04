@@ -27,5 +27,4 @@ public class DoctorRA implements ResourceAssembler<Appuser, Resource<Appuser>>{
 		links.add(ControllerLinkBuilder.linkTo(ControllerLinkBuilder.methodOn(DoctorController.class).getDoctor(userId)).withSelfRel());
 		return new Resource<Appuser>(user, links);
 	}
-
 }

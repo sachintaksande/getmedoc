@@ -1,0 +1,19 @@
+23:01:11.607 [main] DEBUG o.s.d.r.s.commands.ContextCommands - Cleared context variables...
+23:02:01.270 [Spring Shell] DEBUG o.s.d.r.s.commands.DiscoveryCommands - No 'Accept' header specified, using application/x-spring-data-compact+json
+23:02:01.334 [Spring Shell] WARN  o.s.web.client.RestTemplate - GET request for "http://localhost:8080/" resulted in 404 (Not Found); invoking error handler
+23:04:40.405 [Spring Shell] DEBUG o.s.d.r.s.commands.DiscoveryCommands - No 'Accept' header specified, using application/x-spring-data-compact+json
+23:04:57.439 [Spring Shell] DEBUG o.s.d.r.s.commands.DiscoveryCommands - Returning links: []
+23:05:02.411 [Spring Shell] DEBUG o.s.d.r.s.commands.DiscoveryCommands - No 'Accept' header specified, using application/x-spring-data-compact+json
+23:05:04.559 [Spring Shell] DEBUG o.s.d.r.s.commands.DiscoveryCommands - Returning links: []
+23:05:09.355 [Spring Shell] INFO  o.s.d.r.shell.commands.HttpCommands - Sending GET to http://localhost:8080/getmedoc/ using null
+23:05:31.249 [Spring Shell] INFO  o.s.d.r.shell.commands.HttpCommands - Sending GET to http://localhost:8080/getmedoc//doctors using null
+23:05:46.994 [Spring Shell] INFO  o.s.d.r.shell.commands.HttpCommands - Sending GET to http://localhost:8080/getmedoc//doctors using null
+23:05:57.457 [Spring Shell] INFO  o.s.d.r.shell.commands.HttpCommands - Sending GET to http://localhost:8080/getmedoc/doctors using null
+23:06:16.198 [Spring Shell] INFO  o.s.d.r.shell.commands.HttpCommands - Sending GET to http://localhost:8080/getmedoc/doctors using null
+23:08:05.639 [Spring Shell] INFO  o.s.d.r.shell.commands.HttpCommands - Sending GET to http://localhost:8080/getmedoc/doctors using null
+23:12:53.449 [Spring Shell] INFO  o.s.d.r.shell.commands.HttpCommands - Sending GET to http://localhost:8080/getmedoc/doctors using null
+23:14:07.071 [Spring Shell] INFO  o.s.d.r.shell.commands.HttpCommands - Sending GET to http://localhost:8080/getmedoc/doctor using null
+23:14:09.613 [Spring Shell] INFO  o.s.d.r.shell.commands.HttpCommands - Sending GET to http://localhost:8080/getmedoc/doctors using null
+00:04:20.567 [Spring Shell] INFO  o.s.d.r.shell.commands.HttpCommands - Sending GET to http://localhost:8080/getmedoc/doctors using null
+00:04:49.656 [Spring Shell] INFO  o.s.d.r.shell.commands.HttpCommands - Sending GET to http://localhost:8080/getmedoc/doctors/%3FsortBy=name&order=name&pageNo=1&pageSize=20 using null
+00:06:39.288 [Spring Shell] INFO  o.s.d.r.shell.commands.HttpCommands - Sending GET to http://localhost:8080/getmedoc/doctors using null

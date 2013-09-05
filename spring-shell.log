@@ -1,0 +1,18 @@
+// rest-shell 1.0.1.BUILD-SNAPSHOT log opened at 2013-09-05 23:01:12
+help
+// [failed] discover
+baseUri http://localhost:8080/getmedoc/
+discover
+discover
+get
+get /doctors
+get /doctors
+get doctors
+get doctors
+get doctors
+get doctors
+get doctor
+get doctors
+get doctors
+get doctors/?sortBy=name&order=name&pageNo=1&pageSize=20
+get doctors

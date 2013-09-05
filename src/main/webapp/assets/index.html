@@ -1,4 +1,5 @@
-<html ng-app="app">
+<!DOCTYPE html>
+<html ng-app="getmedoc">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Angular Test</title>
@@ -6,22 +7,19 @@
 <link rel="stylesheet" href="css/toast.css">
 <script type="text/javascript"
 	src="js/system/angular/angular-1.0.7/angular.js"></script>
+<script type="text/javascript"
+	src="js/system/angular/angular-1.0.7/angular-resource.js"></script>
 <script type="text/javascript" src="js/controllers/index.js"></script>
 </head>
 <body>
-<div class="grid">
-    <div class="unit span-grid" style='background:red'>
-        Content1
-    </div>
-    <div class="unit span-grid" style='background:green'>
-        Content2<br/>
-        Content2<br/>
-        Content2<br/>
-        Content2<br/>
-        Content2<br/>
-        Content2<br/>
-        Content2
-    </div>
+<div  ng-controller="SearchCtrl">
+
+
+    <label>Search</label><input type="search" ng-model="search"/></br>
+    <button ng-click="onSearch()" >search</button>
+    <a href="docsearch">yahoo</a>
+    <div ng-view></div>
 </div>
+
 </body>
 </html>

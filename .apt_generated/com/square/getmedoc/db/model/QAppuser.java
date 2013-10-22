@@ -24,6 +24,10 @@ public class QAppuser extends EntityPathBase<Appuser> {
 
     public final NumberPath<Long> appuserid = createNumber("appuserid", Long.class);
 
+    public final SetPath<Degree, QDegree> degrees = this.<Degree, QDegree>createSet("degrees", Degree.class, QDegree.class, PathInits.DIRECT2);
+
+    public final SetPath<Doctor, QDoctor> doctors = this.<Doctor, QDoctor>createSet("doctors", Doctor.class, QDoctor.class, PathInits.DIRECT2);
+
     public final StringPath email = createString("email");
 
     public final NumberPath<Integer> enabled = createNumber("enabled", Integer.class);
@@ -34,9 +38,13 @@ public class QAppuser extends EntityPathBase<Appuser> {
 
     public final SetPath<Phone, QPhone> phones = this.<Phone, QPhone>createSet("phones", Phone.class, QPhone.class, PathInits.DIRECT2);
 
+    public final SetPath<Specializations, QSpecializations> specializationses = this.<Specializations, QSpecializations>createSet("specializationses", Specializations.class, QSpecializations.class, PathInits.DIRECT2);
+
     public final NumberPath<Integer> status = createNumber("status", Integer.class);
 
     public final NumberPath<Integer> substatus = createNumber("substatus", Integer.class);
+
+    public final SetPath<Timings, QTimings> timingses = this.<Timings, QTimings>createSet("timingses", Timings.class, QTimings.class, PathInits.DIRECT2);
 
     public final StringPath username = createString("username");
 

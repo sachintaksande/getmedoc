@@ -1,7 +1,9 @@
 package com.square.getmedoc.db.model;
 
-// Generated Sep 3, 2013 12:19:59 AM by Hibernate Tools 4.0.0
+// Generated Oct 22, 2013 11:20:48 AM by Hibernate Tools 4.0.0
 
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,6 +12,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -30,6 +33,7 @@ public class Address implements java.io.Serializable {
 	private String zip;
 	private int type;
 	private Integer preferred;
+	private Set<Timings> timingses = new HashSet<Timings>(0);
 
 	public Address() {
 	}
@@ -43,7 +47,7 @@ public class Address implements java.io.Serializable {
 
 	public Address(Appuser appuser, String line1, String line2, String line3,
 			String city, String state, String country, String zip, int type,
-			Integer preferred) {
+			Integer preferred, Set<Timings> timingses) {
 		this.appuser = appuser;
 		this.line1 = line1;
 		this.line2 = line2;
@@ -54,6 +58,7 @@ public class Address implements java.io.Serializable {
 		this.zip = zip;
 		this.type = type;
 		this.preferred = preferred;
+		this.timingses = timingses;
 	}
 
 	@Id
@@ -156,6 +161,15 @@ public class Address implements java.io.Serializable {
 
 	public void setPreferred(Integer preferred) {
 		this.preferred = preferred;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "address")
+	public Set<Timings> getTimingses() {
+		return this.timingses;
+	}
+
+	public void setTimingses(Set<Timings> timingses) {
+		this.timingses = timingses;
 	}
 
 }

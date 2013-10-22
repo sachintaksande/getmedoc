@@ -13,9 +13,15 @@ angular.module('getmedoc',['ngResource'])
 		$scope.onSearch = function() {debugger;
 			var Doctors = $resource('doctors');
 			$scope.doctorsList = Doctors.get({
+						name: $scope.search,
+						city:'nagpur',
+						zip:'440024',
+						spcl:'mbbs',
 						sortBy: 'name',
 						order:'asc',
-						pageNo:1,
+						sortField:'name',
+						sortOrder: 'desc',
+						pageNo:0,
 						pageSize: 50
 					});
 			

@@ -14,6 +14,7 @@ import com.square.getmedoc.db.model.Appuser;
 public interface AppuserService extends JpaRepository<Appuser, Long> {
 	public Appuser findByUsername(String username);
 	public Appuser findByUsernameAndPassword(String username, String password);
-	public List<Appuser> load(int first, int pageSize, String sortField, SortOrder sortOrder, Map<String, String> filters);
+	public List<Appuser> loadDoctors(int first, int pageSize, String sortField, SortOrder sortOrder, Map<String, String> filters);
+	public List<Appuser> load(int first, int pageSize, String sortField, SortOrder sortOrder, Map<String, String> filters, int type);
 	public List<Appuser> findByUsertype(Integer type);
 }

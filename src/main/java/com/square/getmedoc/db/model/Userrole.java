@@ -1,6 +1,6 @@
 package com.square.getmedoc.db.model;
 
-// Generated Sep 3, 2013 12:19:59 AM by Hibernate Tools 4.0.0
+// Generated Oct 22, 2013 11:20:48 AM by Hibernate Tools 4.0.0
 
 import java.util.HashSet;
 import java.util.Set;

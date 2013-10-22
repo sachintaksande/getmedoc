@@ -69,7 +69,7 @@
       <property name="driverClass" value="${astroguide.jdbc.driverClassName}" />
       <property name="jdbcUrl" value="${astroguide.jdbc.url}" />
       <property name="username" value="${astroguide.jdbc.username}"/>
-      <property name="password" value=""/>
+      <property name="password" value="${astroguide.jdbc.password}"/>
       
       <property name="idleConnectionTestPeriod" value="60"/>
       <property name="idleMaxAge" value="240"/>      

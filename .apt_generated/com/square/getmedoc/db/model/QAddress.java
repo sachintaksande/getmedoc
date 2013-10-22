@@ -40,6 +40,8 @@ public class QAddress extends EntityPathBase<Address> {
 
     public final StringPath state = createString("state");
 
+    public final SetPath<Timings, QTimings> timingses = this.<Timings, QTimings>createSet("timingses", Timings.class, QTimings.class, PathInits.DIRECT2);
+
     public final NumberPath<Integer> type = createNumber("type", Integer.class);
 
     public final StringPath zip = createString("zip");

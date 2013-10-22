@@ -1,6 +1,6 @@
 package com.square.getmedoc.db.model;
 
-// Generated Sep 3, 2013 12:19:59 AM by Hibernate Tools 4.0.0
+// Generated Oct 22, 2013 11:20:48 AM by Hibernate Tools 4.0.0
 
 import java.util.HashSet;
 import java.util.Set;
@@ -35,9 +35,14 @@ public class Appuser implements java.io.Serializable {
 	private Integer status;
 	private Integer substatus;
 	private Set<Address> addresses = new HashSet<Address>(0);
+	private Set<Timings> timingses = new HashSet<Timings>(0);
 	private Set<Userrole> userroles = new HashSet<Userrole>(0);
 	private Set<Webaddress> webaddresses = new HashSet<Webaddress>(0);
 	private Set<Phone> phones = new HashSet<Phone>(0);
+	private Set<Specializations> specializationses = new HashSet<Specializations>(
+			0);
+	private Set<Doctor> doctors = new HashSet<Doctor>(0);
+	private Set<Degree> degrees = new HashSet<Degree>(0);
 
 	public Appuser() {
 	}
@@ -50,8 +55,10 @@ public class Appuser implements java.io.Serializable {
 	public Appuser(String username, String password, String fullname,
 			String email, Integer enabled, Integer usertype,
 			Integer usersubtype, Integer status, Integer substatus,
-			Set<Address> addresses, Set<Userrole> userroles,
-			Set<Webaddress> webaddresses, Set<Phone> phones) {
+			Set<Address> addresses, Set<Timings> timingses,
+			Set<Userrole> userroles, Set<Webaddress> webaddresses,
+			Set<Phone> phones, Set<Specializations> specializationses,
+			Set<Doctor> doctors, Set<Degree> degrees) {
 		this.username = username;
 		this.password = password;
 		this.fullname = fullname;
@@ -62,9 +69,13 @@ public class Appuser implements java.io.Serializable {
 		this.status = status;
 		this.substatus = substatus;
 		this.addresses = addresses;
+		this.timingses = timingses;
 		this.userroles = userroles;
 		this.webaddresses = webaddresses;
 		this.phones = phones;
+		this.specializationses = specializationses;
+		this.doctors = doctors;
+		this.degrees = degrees;
 	}
 
 	@Id
@@ -168,6 +179,15 @@ public class Appuser implements java.io.Serializable {
 		this.addresses = addresses;
 	}
 
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "appuser")
+	public Set<Timings> getTimingses() {
+		return this.timingses;
+	}
+
+	public void setTimingses(Set<Timings> timingses) {
+		this.timingses = timingses;
+	}
+
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "appuseruserrole", catalog = "getmedoc", joinColumns = { @JoinColumn(name = "appuserid", nullable = false, updatable = false) }, inverseJoinColumns = { @JoinColumn(name = "userroleid", nullable = false, updatable = false) })
 	public Set<Userrole> getUserroles() {
@@ -194,6 +214,33 @@ public class Appuser implements java.io.Serializable {
 
 	public void setPhones(Set<Phone> phones) {
 		this.phones = phones;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "appuser")
+	public Set<Specializations> getSpecializationses() {
+		return this.specializationses;
+	}
+
+	public void setSpecializationses(Set<Specializations> specializationses) {
+		this.specializationses = specializationses;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "appuser")
+	public Set<Doctor> getDoctors() {
+		return this.doctors;
+	}
+
+	public void setDoctors(Set<Doctor> doctors) {
+		this.doctors = doctors;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "appuser")
+	public Set<Degree> getDegrees() {
+		return this.degrees;
+	}
+
+	public void setDegrees(Set<Degree> degrees) {
+		this.degrees = degrees;
 	}
 
 }

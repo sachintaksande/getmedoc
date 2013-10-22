@@ -21,8 +21,13 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 
+import com.mysema.query.jpa.impl.JPAQuery;
 import com.square.getmedoc.db.model.Appuser;
+import com.square.getmedoc.db.model.QAddress;
+import com.square.getmedoc.db.model.QAppuser;
+import com.square.getmedoc.db.model.QSpecializations;
 import com.square.getmedoc.repositories.AppuserRepository;
 import com.square.getmedoc.services.AppuserService;
 
@@ -146,8 +151,12 @@ public class AppuserServiceImpl implements AppuserService {
 		return null;
 	}
 	
+	public List<Appuser> loadDoctors(int pageNo, int pageSize, String sortField, SortOrder sortOrder, Map<String, String> filters) {
+		return load(pageNo, pageSize, sortField, sortOrder, filters, 1);
+	}
 	
-	public List<Appuser> load(int pageNo, int pageSize, String sortField, SortOrder sortOrder, Map<String, String> filters) {
+	//type 1: doctor, 0:normal user
+	public List<Appuser> load1(int pageNo, int pageSize, String sortField, SortOrder sortOrder, Map<String, String> filters, int type) {
 		
 		CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
 		
@@ -174,6 +183,8 @@ public class AppuserServiceImpl implements AppuserService {
 				Predicate predicate = criteriaBuilder.like(criteriaBuilder.upper(from.get((String)entry.getKey()).as(String.class)), "%"+((String) entry.getValue())+"%".toUpperCase());
 				predicates.add(predicate);
 			}
+			Predicate typeCond = criteriaBuilder.equal(from.get("usertype"), type);
+			predicates.add(typeCond);
 			Predicate[] arr = new Predicate[predicates.size()];
 			predicates.toArray(arr);
 			select.where(arr);
@@ -182,6 +193,89 @@ public class AppuserServiceImpl implements AppuserService {
 		qry.setFirstResult(pageNo*pageSize);
 		qry.setMaxResults(pageSize);
 		return qry.getResultList();
+	}
+	
+	//type 1: doctor, 0:normal user
+	public List<Appuser> load(int pageNo, int pageSize, String sortField, SortOrder sortOrder, Map<String, String> filters, int type) {
+		
+		QAppuser appuser = QAppuser.appuser;
+		//QSpecializations specializations = QSpecializations.specializations;
+		//QAddress address = QAddress.address;
+		
+		//Create Query
+		JPAQuery query = new JPAQuery(em);
+		query.from(appuser);//.leftJoin(appuser.specializationses, specializations).leftJoin(appuser.addresses, address);
+		
+
+		//Apply Conditions
+		//Name
+		if(!StringUtils.isEmpty(filters.get("name"))){
+			query.on(appuser.username.containsIgnoreCase(filters.get("name")));
+		}
+		//city
+		if(!StringUtils.isEmpty(filters.get("city"))){
+			query.on(appuser.addresses.any().city.containsIgnoreCase(filters.get("city")));
+		}
+		//zip
+		if(!StringUtils.isEmpty(filters.get("zip"))){
+			query.on(appuser.addresses.any().zip.containsIgnoreCase(filters.get("zip")));
+		}
+		//specialization
+		if(!StringUtils.isEmpty(filters.get("spcl"))){
+			query.on(appuser.specializationses.any().choice.description.containsIgnoreCase(filters.get("spcl")));
+		}
+		
+		//sorting applied on Name
+		if (!StringUtils.isEmpty(sortField)){
+			 if (!StringUtils.isEmpty(sortOrder) && sortOrder.equals(SortOrder.DESCENDING)) {
+				 query.orderBy(appuser.username.desc());
+			 } else {
+				 query.orderBy(appuser.username.asc());
+			 }
+		}
+		
+		//Pagination
+		query.offset(pageNo*pageSize);
+		query.limit(pageSize);
+		return query.listResults(appuser).getResults();
+		
+		
+		
+		/*CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
+		
+		CriteriaQuery<Appuser> cq = criteriaBuilder.createQuery(Appuser.class);
+		
+		Root<Appuser> from = cq.from(Appuser.class);
+		
+		CriteriaQuery<Appuser> select = cq.select(from).l;
+		
+		if (sortField != null && !sortField.isEmpty()) {
+			 if (sortOrder != null && sortOrder.equals(SortOrder.ASCENDING)) {
+				 select.orderBy(criteriaBuilder.asc(from.get(sortField)));
+			 } else if (sortOrder != null && sortOrder.equals(SortOrder.DESCENDING)){
+				 select.orderBy(criteriaBuilder.desc(from.get(sortField)));
+			 }
+		}
+		if (!filters.isEmpty()) {
+			List<Predicate> predicates = new ArrayList<Predicate>();
+			Iterator<Entry<String, String>> iterator = filters.entrySet().iterator();
+			while (iterator.hasNext()) {
+				Entry<String, String> entry = iterator.next();
+				if((String) entry.getValue() == null || (String) entry.getValue().trim() == "")
+					continue;
+				Predicate predicate = criteriaBuilder.like(criteriaBuilder.upper(from.get((String)entry.getKey()).as(String.class)), "%"+((String) entry.getValue())+"%".toUpperCase());
+				predicates.add(predicate);
+			}
+			Predicate typeCond = criteriaBuilder.equal(from.get("usertype"), type);
+			predicates.add(typeCond);
+			Predicate[] arr = new Predicate[predicates.size()];
+			predicates.toArray(arr);
+			select.where(arr);
+		}
+		TypedQuery<Appuser> qry = em.createQuery(select);
+		qry.setFirstResult(pageNo*pageSize);
+		qry.setMaxResults(pageSize);
+		return qry.getResultList();*/
 	}
 
 	@Override

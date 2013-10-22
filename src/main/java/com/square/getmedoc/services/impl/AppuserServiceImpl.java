@@ -210,19 +210,19 @@ public class AppuserServiceImpl implements AppuserService {
 		//Apply Conditions
 		//Name
 		if(!StringUtils.isEmpty(filters.get("name"))){
-			query.on(appuser.username.containsIgnoreCase(filters.get("name")));
+			query.where(appuser.username.containsIgnoreCase(filters.get("name")));
 		}
 		//city
 		if(!StringUtils.isEmpty(filters.get("city"))){
-			query.on(appuser.addresses.any().city.containsIgnoreCase(filters.get("city")));
+			query.where(appuser.addresses.any().city.containsIgnoreCase(filters.get("city")));
 		}
 		//zip
 		if(!StringUtils.isEmpty(filters.get("zip"))){
-			query.on(appuser.addresses.any().zip.containsIgnoreCase(filters.get("zip")));
+			query.where(appuser.addresses.any().zip.containsIgnoreCase(filters.get("zip")));
 		}
 		//specialization
 		if(!StringUtils.isEmpty(filters.get("spcl"))){
-			query.on(appuser.specializationses.any().choice.description.containsIgnoreCase(filters.get("spcl")));
+			query.where(appuser.specializationses.any().choice.description.containsIgnoreCase(filters.get("spcl")));
 		}
 		
 		//sorting applied on Name

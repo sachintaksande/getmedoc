@@ -75,8 +75,8 @@ public class DoctorController {
 		for(Appuser u : users){
 			userResCollection.add(doctorRA.toResource(u));
 		}
-		Link self = ControllerLinkBuilder.linkTo(ControllerLinkBuilder.methodOn(DoctorController.class).getFilteredDoctors(requestParams)).withSelfRel();
-		Resources<Resource<Appuser>> userResources = new Resources<Resource<Appuser>>(userResCollection, self);
+		//Link self = ControllerLinkBuilder.linkTo(ControllerLinkBuilder.methodOn(DoctorController.class).getFilteredDoctors(requestParams)).withSelfRel();
+		Resources<Resource<Appuser>> userResources = new Resources<Resource<Appuser>>(userResCollection);
 		return new ResponseEntity<Resources<Resource<Appuser>>>(userResources, HttpStatus.OK);
 	}
 }
